@@ -1,18 +1,24 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Briefcase, Building2, GraduationCap, Users } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Briefcase, Building2, GraduationCap, Users } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
-const Careers = () => {
+const Careers: React.FC = () => {
+  const { activeTheme } = useTheme();
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative flex min-h-[40vh] items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section
+        style={{ backgroundColor: activeTheme.backgroundColor }}
+        className="relative flex min-h-[40vh] items-center justify-center bg-blue-600 text-white"
+      >
         <div className="container text-center">
           <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
             Join Our Team
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-200">
-            Be part of a dynamic team that values growth, innovation, and excellence
+            Be part of a dynamic team that values growth, innovation, and
+            excellence
           </p>
         </div>
       </section>
@@ -22,20 +28,27 @@ const Careers = () => {
         <div className="container">
           <h2 className="mb-12 text-center text-3xl font-bold">Why Join Us?</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
+            <Card style={{ backgroundColor: activeTheme.primaryColor }}>
               <CardHeader>
-                <Users className="mb-2 h-8 w-8 text-primary" />
+                <Users
+                  style={{ color: activeTheme.backgroundColor }}
+                  className="mb-2 h-8 w-8 text-primary"
+                />
                 <CardTitle>Great Team</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Work with passionate individuals who inspire and support each other
+                  Work with passionate individuals who inspire and support each
+                  other
                 </p>
               </CardContent>
             </Card>
-            <Card>
+            <Card style={{ backgroundColor: activeTheme.primaryColor }}>
               <CardHeader>
-                <GraduationCap className="mb-2 h-8 w-8 text-primary" />
+                <GraduationCap
+                  style={{ color: activeTheme.backgroundColor }}
+                  className="mb-2 h-8 w-8 text-primary"
+                />
                 <CardTitle>Growth</CardTitle>
               </CardHeader>
               <CardContent>
@@ -44,9 +57,12 @@ const Careers = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card>
+            <Card style={{ backgroundColor: activeTheme.primaryColor }}>
               <CardHeader>
-                <Building2 className="mb-2 h-8 w-8 text-primary" />
+                <Building2
+                  style={{ color: activeTheme.backgroundColor }}
+                  className="mb-2 h-8 w-8 text-primary"
+                />
                 <CardTitle>Stability</CardTitle>
               </CardHeader>
               <CardContent>
@@ -55,9 +71,12 @@ const Careers = () => {
                 </p>
               </CardContent>
             </Card>
-            <Card>
+            <Card style={{ backgroundColor: activeTheme.primaryColor }}>
               <CardHeader>
-                <Briefcase className="mb-2 h-8 w-8 text-primary" />
+                <Briefcase
+                  style={{ color: activeTheme.backgroundColor }}
+                  className="mb-2 h-8 w-8 text-primary"
+                />
                 <CardTitle>Benefits</CardTitle>
               </CardHeader>
               <CardContent>
@@ -73,7 +92,9 @@ const Careers = () => {
       {/* Current Openings */}
       <section className="bg-gray-50 py-16">
         <div className="container">
-          <h2 className="mb-12 text-center text-3xl font-bold">Current Openings</h2>
+          <h2 className="mb-12 text-center text-3xl font-bold">
+            Current Openings
+          </h2>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <CardHeader>
@@ -81,7 +102,8 @@ const Careers = () => {
               </CardHeader>
               <CardContent>
                 <p className="mb-4 text-muted-foreground">
-                  Lead store operations and drive business growth while managing a team of retail professionals.
+                  Lead store operations and drive business growth while managing
+                  a team of retail professionals.
                 </p>
                 <Button>Apply Now</Button>
               </CardContent>
@@ -92,7 +114,8 @@ const Careers = () => {
               </CardHeader>
               <CardContent>
                 <p className="mb-4 text-muted-foreground">
-                  Provide exceptional customer service and assist in daily store operations.
+                  Provide exceptional customer service and assist in daily store
+                  operations.
                 </p>
                 <Button>Apply Now</Button>
               </CardContent>
@@ -101,7 +124,7 @@ const Careers = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Careers
+export default Careers;

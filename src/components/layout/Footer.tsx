@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Facebook, Mail, MapPin, Phone } from "lucide-react"
-import { Link } from "react-router-dom"
-
-const Footer = () => {
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Facebook, Mail, MapPin, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useTheme } from "@/context/ThemeContext";
+const Footer: React.FC = () => {
+  const { activeTheme } = useTheme();
   return (
     <footer className="border-t bg-background">
       <div className="container py-8 md:py-12">
@@ -29,16 +30,24 @@ const Footer = () => {
             <h3 className="mb-4 text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <Link to="/about" className="hover:text-primary">About Us</Link>
+                <Link to="/about" className="hover:text-primary">
+                  About Us
+                </Link>
               </li>
               <li>
-                <Link to="/stores" className="hover:text-primary">Our Stores</Link>
+                <Link to="/stores" className="hover:text-primary">
+                  Our Stores
+                </Link>
               </li>
               <li>
-                <Link to="/careers" className="hover:text-primary">Careers</Link>
+                <Link to="/careers" className="hover:text-primary">
+                  Careers
+                </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-primary">Contact</Link>
+                <Link to="/contact" className="hover:text-primary">
+                  Contact
+                </Link>
               </li>
             </ul>
           </div>
@@ -49,7 +58,9 @@ const Footer = () => {
             </p>
             <div className="flex gap-2">
               <Input placeholder="Enter your email" type="email" />
-              <Button>Subscribe</Button>
+              <Button style={{ backgroundColor: activeTheme.backgroundColor }}>
+                Subscribe
+              </Button>
             </div>
             <div className="mt-4">
               <a
@@ -64,11 +75,14 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Magic Group of Companies. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Magic Group of Companies. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

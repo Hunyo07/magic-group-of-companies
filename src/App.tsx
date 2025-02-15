@@ -11,6 +11,7 @@ import Contact from "./pages/Contact"
 import Promotions from "./pages/Promotions"
 import Supermarket from "./pages/Supermarket"
 import DepartmentStore from "./pages/DepartmentStore"
+import { ThemeProvider } from "./context/ThemeContext";
 
 const queryClient = new QueryClient()
 
