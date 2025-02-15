@@ -9,9 +9,10 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  build: { manifest: true, outDir: "./dist" },
-  base: "/",
-  root: "./src",
+  root: ".", // Ensure this points to the correct root
+  build: {
+    outDir: "dist", // Ensure this is correct
+  },
   plugins: [react(), mode === "development" && componentTagger()].filter(
     Boolean
   ),
