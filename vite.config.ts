@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  build: { manifest: true, outDir: "./dist" },
+  base: "/",
+  root: "./src",
   plugins: [react(), mode === "development" && componentTagger()].filter(
     Boolean
   ),
@@ -16,8 +19,5 @@ export default defineConfig(({ mode }) => ({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  },
-  build: {
-    outDir: "dist", // Ensure Vite outputs to "dist"
   },
 }));
