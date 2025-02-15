@@ -3,13 +3,30 @@ import { Building, Users, Target, Heart } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useTheme } from "@/context/ThemeContext";
+import { useEffect, useState } from "react";
 
 const About: React.FC = () => {
   AOS.init();
   const { activeTheme } = useTheme();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []); //
   return (
     <div className="container py-16">
       {/* Hero Section */}
+      {loading && (
+        <div
+          id="global-loader"
+          className="fixed inset-0 flex items-center justify-center bg-white z-50"
+        >
+          <div className="whirly-loader"></div>
+        </div>
+      )}
       <div data-aos="zoom-in" className="mb-16 text-center">
         <h1
           style={{ color: activeTheme.backgroundColor }}

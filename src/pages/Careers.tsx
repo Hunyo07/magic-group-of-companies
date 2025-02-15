@@ -2,11 +2,28 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Briefcase, Building2, GraduationCap, Users } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
+import { useEffect, useState } from "react";
 
 const Careers: React.FC = () => {
   const { activeTheme } = useTheme();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []); //
   return (
     <div className="flex flex-col">
+      {loading && (
+        <div
+          id="global-loader"
+          className="fixed inset-0 flex items-center justify-center bg-white z-50"
+        >
+          <div className="whirly-loader"></div>
+        </div>
+      )}
       {/* Hero Section */}
       <section
         style={{ backgroundColor: activeTheme.backgroundColor }}

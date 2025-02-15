@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { useTheme } from "@/context/ThemeContext";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 
@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
   const { activeTheme } = useTheme();
   const formRef = useRef();
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [form, setForm] = useState({
     name: "",
@@ -77,9 +77,24 @@ const Contact: React.FC = () => {
         }
       );
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
+      {loading && (
+        <div
+          id="global-loader"
+          className="fixed inset-0 flex items-center justify-center bg-white z-50"
+        >
+          <div className="whirly-loader"></div>
+        </div>
+      )}
       <section
         style={{ backgroundColor: activeTheme.backgroundColor }}
         className="relative flex min-h-[40vh] items-center justify-center bg-blue-600 text-white"

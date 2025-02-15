@@ -1,44 +1,67 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useState } from "react";
 
 const Supermarket = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []); //
   return (
     <div className="container py-8">
+      {loading && (
+        <div
+          id="global-loader"
+          className="fixed inset-0 flex items-center justify-center bg-white z-50"
+        >
+          <div className="whirly-loader"></div>
+        </div>
+      )}
       <h1 className="text-4xl font-bold mb-6">Magic Supermarket</h1>
-      
+
       <div className="grid md:grid-cols-2 gap-8 mb-8">
         <Card>
           <CardContent className="p-6">
-            <img 
-              src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9" 
-              alt="Fresh Produce" 
+            <img
+              src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9"
+              alt="Fresh Produce"
               className="w-full h-64 object-cover rounded-lg mb-4"
             />
             <h2 className="text-2xl font-semibold mb-2">Fresh Produce</h2>
             <p className="text-gray-600">
-              Discover the freshest fruits and vegetables sourced directly from local farmers.
-              Our produce section offers a wide variety of seasonal items to meet your daily needs.
+              Discover the freshest fruits and vegetables sourced directly from
+              local farmers. Our produce section offers a wide variety of
+              seasonal items to meet your daily needs.
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardContent className="p-6">
-            <img 
-              src="https://images.unsplash.com/photo-1487958449943-2429e8be8625" 
-              alt="Store Exterior" 
+            <img
+              src="https://images.unsplash.com/photo-1487958449943-2429e8be8625"
+              alt="Store Exterior"
               className="w-full h-64 object-cover rounded-lg mb-4"
             />
-            <h2 className="text-2xl font-semibold mb-2">Modern Shopping Experience</h2>
+            <h2 className="text-2xl font-semibold mb-2">
+              Modern Shopping Experience
+            </h2>
             <p className="text-gray-600">
-              Experience convenient shopping in our modern, well-organized stores.
-              Wide aisles, clear signage, and helpful staff ensure a pleasant shopping experience.
+              Experience convenient shopping in our modern, well-organized
+              stores. Wide aisles, clear signage, and helpful staff ensure a
+              pleasant shopping experience.
             </p>
           </CardContent>
         </Card>
       </div>
 
       <div className="bg-gray-50 p-8 rounded-lg">
-        <h2 className="text-3xl font-semibold mb-4">Why Choose Magic Supermarket?</h2>
+        <h2 className="text-3xl font-semibold mb-4">
+          Why Choose Magic Supermarket?
+        </h2>
         <ul className="list-disc list-inside space-y-2 text-gray-600">
           <li>Wide selection of fresh produce and grocery items</li>
           <li>Competitive prices and regular promotions</li>
@@ -48,7 +71,7 @@ const Supermarket = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Supermarket
+export default Supermarket;
